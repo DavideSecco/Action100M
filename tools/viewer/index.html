@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Action100M Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Top bar ─────────────────────────────────────────────────── -->
+  <div id="topbar">
+    <span id="brand">Action100M</span>
+    <div id="selectors">
+      <label for="file-select">File</label>
+      <select id="file-select">
+        <option value="">— select parquet —</option>
+      </select>
+      <label for="video-select">Video</label>
+      <select id="video-select" disabled>
+        <option value="">— select video —</option>
+      </select>
+    </div>
+    <div id="topbar-actions">
+      <button id="info-btn">ℹ</button>
+      <button id="cc-btn">CC</button>
+      <a id="yt-link" href="#" target="_blank" rel="noopener" hidden>▶ YouTube</a>
+    </div>
+    <div id="info-popover" hidden></div>
+  </div>
+
+  <!-- ── Main area: player (16:9) + timeline (right column) ──────── -->
+  <div id="main-area" style="flex: 0 0 360px">
+    <div id="player-wrap">
+      <video id="local-player" controls hidden></video>
+      <div id="yt-player" hidden></div>
+      <div id="player-placeholder">
+        <span>Select a video to begin</span>
+      </div>
+      <div id="cc-overlay" hidden></div>
+    </div>
+
+    <div id="timeline-section">
+      <div id="timeline-label">Timeline</div>
+      <div id="timeline-wrap">
+        <div id="timeline-container"></div>
+        <div id="playhead"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resize-handle" id="rh-main"></div>
+
+  <!-- ── Nodes panel ──────────────────────────────────────────────── -->
+  <div id="nodes-section">
+    <div id="nodes-label">Active annotations</div>
+    <div id="nodes-panel">
+      <span id="nodes-placeholder">Play the video to see active annotations.</span>
+    </div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>

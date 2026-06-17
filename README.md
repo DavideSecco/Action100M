@@ -109,6 +109,42 @@ Each element in `nodes` is a temporally localized segment in the hierachical Tre
 Texts shown correspond to brief action description (i.e., `gpt["action"]["brief"]`).
 
 
+## Tools (Bocconi Group)
+
+Additional scripts for downloading and exploring the dataset locally.
+All commands should be run from the repository root.
+
+### Download dataset parquet files from HuggingFace
+
+```bash
+pip install huggingface_hub
+python tools/download_dataset.py
+```
+
+### Download videos from YouTube
+
+Requires [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and `ffmpeg`.
+
+```bash
+pip install yt-dlp
+python tools/download_videos.py data/examples.parquet
+python tools/download_videos.py data/examples.parquet --force   # re-download existing
+python tools/download_videos.py data/examples.parquet --max-videos 3
+```
+
+Downloaded videos are saved to `data/videos/<parquet-stem>/`.
+
+### Interactive web viewer
+
+Browse annotations, timeline, and video playback in a local web interface.
+
+```bash
+pip install flask pandas pyarrow numpy
+python tools/serve_viewer.py
+# then open http://localhost:8765
+```
+
+
 ## License
 
 Action100M is under FAIR Noncommercial Research License, as found in the LICENSE file.
